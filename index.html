@@ -1,0 +1,100 @@
+ <!DOCTYPE HTML>
+<html>
+  <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q2XB6RR8K4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q2XB6RR8K4');
+</script>
+    <title> Chat </title>
+    <meta name = "charset" charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width">
+    <script src = "script.js"></script>
+    <script src= "socket.io/socket.io.js"></script>
+ <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+      $(document).ready(function(){
+             $("#file").change(function(){
+                   var length=this.files.length;
+                        if(!length){
+                          return false;
+                         }
+                        changeBackground(this);
+                });
+       });
+     
+      // Creating the function
+      function changeBackground(img){
+            var file = img.files[0];
+            var imagefile = file.type;
+            var match= ["image/jpeg","image/png","image/jpg"];
+                  if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
+                        alert("Invalid File Extension");
+                  }else{
+                        var reader = new FileReader();
+                        reader.onload = imageIsLoaded;
+                        reader.readAsDataURL(img.files[0]);
+                  }
+            function imageIsLoaded(e) {
+                  $('body').css({ 'background-image': "url(" + e.target.result + ")" });
+                  }     
+            }
+</script>
+  </head>
+  <body onload = "onload()">
+    <div id = "Main">
+      <audio id = "Ding" src = "Ding.mp3"> </audio>
+      <h1 id = "Title" style = "cursor: pointer;"> Connectroom </h1>
+      <h6 id="views">Page Views : 0</h6>
+      <div id = "AccessPort">
+        
+        <label id = "NameLabel" > Username  </label>
+        <br>
+        <input id = "NameInput" placeholder="Username" type = "text">
+        <br><br>
+        <label id = "IDLabel"> Chatroom </label>
+        <br>
+        <input id = "IDInput" placeholder = "10000001" type = "number">
+        <input id = "ConnectButton" class = "Button" type = "submit" value = "Connect" onclick = "Connect()">
+                <input id = "wc" onclick="wc()" value = "World Chat 🌐" class = "Button" type = "submit">
+         <input id = "bg" onclick="bg()" value = "Change Background" class = "Button" type = "submit">
+        <input type="file" name="" id="file" value="Click" disabled>
+      </div>
+      <h2 id = "RoomID"> Chatroom : None </h2>
+      <div id = "Chat">
+        <p id = "Message0" class = "Message"> - </p>
+        <p id = "Message1" class = "Message"> - </p>
+        <p id = "Message2" class = "Message"> - </p>
+        <p id = "Message3" class = "Message"> - </p>
+        <p id = "Message4" class = "Message"> - </p>
+        <p id = "Message5" class = "Message"> - </p>
+        <p id = "Message6" class = "Message"> - </p>
+        <p id = "Message7" class = "Message"> - </p>
+        <p id = "Message8" class = "Message"> - </p>
+        <p id = "Message9" class = "Message"> - </p>
+         <p id = "Message10" class = "Message"> - </p>
+        <p id = "Message11" class = "Message"> - </p>
+        <p id = "Message12" class = "Message"> - </p>
+        <p id = "Message13" class = "Message"> - </p>
+        <p id = "Message14" class = "Message"> - </p>
+        <p id = "Message15" class = "Message"> - </p>
+        <p id = "Message16" class = "Message"> - </p>
+        <p id = "Message17" class = "Message"> - </p>
+        <p id = "Message18" class = "Message"> - </p>
+        <p id = "Message19" class = "Message"> - </p>
+        <label id = "MessageLabel"> Message </label>
+        <br>
+        <input id = "ComposedMessage" type = "text" >
+        <input id = "SendMessage" onclick="Send()" value = "Send" class = "Button" type = "submit" disabled style="cursor:not-allowed; ">
+    <input id = "exit" onclick="exit()" value = "Exit ✖" class = "Button" type = "submit">
+<input id = "wp" onclick="wp()" value = "Contact Me 📱" class = "Button" type = "submit">
+      </div>
+      <br><br>
+    </div>
+  </body>
+</html>
